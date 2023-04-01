@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:provider/provider.dart';
@@ -45,8 +46,34 @@ class _MyHomePageState extends State<MyHomePage>{
 }
 
 
+Future<void> implement() async {
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Obtain a list of the available cameras on the device.
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+
+ 
+}
 class TabBarDemo extends StatelessWidget {
   const TabBarDemo({super.key});
+  Future<CameraDescription> implement() async {
+  // Ensure that plugin services are initialized so that `availableCameras()`
+  // can be called before `runApp()`
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // Obtain a list of the available cameras on the device.
+  final cameras = await availableCameras();
+
+  // Get a specific camera from the list of available cameras.
+  final firstCamera = cameras.first;
+  return firstCamera;
+ 
+}
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +92,7 @@ class TabBarDemo extends StatelessWidget {
           ),
           body:  TabBarView(
             children: [
-              CameraApp(),
+              //TakePictureScreen(camera: implement().then((value) => null),),
               //HomePage(),
               const MyHomePage(title: "Profile!")
             ],
