@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "806744542026",
+    "project_id": "flicko-hackathon",
+    "storage_bucket": "flicko-hackathon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806744542026:android:417d741ac9af1c87d60fb3",
+        "android_client_info": {
+          "package_name": "com.example.our_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806744542026-3nmdhn0m46n9ojlk7j2gt414oqlupc0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.our_app",
+            "certificate_hash": "d1ea4089e4011a357f3b980579879b81989d6f9f"
+          }
+        },
+        {
+          "client_id": "806744542026-fjgrvf34tipbufdpq6v2sfpo7p9pduk5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvoCUmmBFKzmSMzyMhLRNoF7aDfdw7TR4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806744542026-fjgrvf34tipbufdpq6v2sfpo7p9pduk5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

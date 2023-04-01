@@ -59,26 +59,74 @@ import 'package:flutter/material.dart';
 
 import 'pic.dart';
 
-Future<void> main() async {
-  // Ensure that plugin services are initialized so that `availableCameras()`
-  // can be called before `runApp()`
-  WidgetsFlutterBinding.ensureInitialized();
+import 'sign_in_screen.dart';
 
-  // Obtain a list of the available cameras on the device.
-  final cameras = await availableCameras();
+void main() {
+  runApp(MyApp());
+}
 
-  // Get a specific camera from the list of available cameras.
-  final firstCamera = cameras.first;
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
 
-  runApp(
-    MaterialApp(
-      theme: ThemeData.dark(),
-      home: TakePictureScreen(
-        // Pass the appropriate camera to the TakePictureScreen widget.
-        camera: firstCamera,
+class _MyAppState extends State<MyApp> {
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.pink,
       ),
-    ),
-  );
+      //home: const MyHomePage(title: 'The Buzz'),
+      home: SignInScreen(),
+    );
+  }
+}
+
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
+
+  final String title;
+
+  @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  CameraDescription? _selectedCamera;
+
+  @override
+  void initState() {
+    super.initState();
+    // Get the list of available cameras and select the first one.
+    availableCameras().then((cameras) {
+      setState(() {
+        _selectedCamera = cameras.first;
+      });
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    // This method is rerun every time setState is called
+    //
+    // The Flutter framework has been optimized to make rerunning build methods
+    // fast, so that you can just rebuild anything that needs updating rather
+    // than having to individually change instances of widgets.
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text(widget.title),
+      ),
+      body: _selectedCamera == null
+        ? const Center(child: CircularProgressIndicator())
+        : Center(
+            child: TakePictureScreen(camera: _selectedCamera!),
+          ),
+    );
+  }
 }
 
 // A screen that allows users to take a picture using a given camera.
@@ -191,7 +239,7 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(children: <Widget>[
-          Image(image:  NetworkImage(Image.file(File(imagePath)).toString()),),
+          Image.file(File(imagePath)),
         Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: ElevatedButton(
