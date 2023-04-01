@@ -58,7 +58,9 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
 import 'pic.dart';
-
+class Counter{
+  static int points = 0;
+}
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
   // can be called before `runApp()`
@@ -133,6 +135,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
             // If the Future is complete, display the preview.
+            
             return CameraPreview(_controller);
           } else {
             // Otherwise, display a loading indicator.
@@ -154,7 +157,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
             final image = await _controller.takePicture();
 
             if (!mounted) return;
-
+            Counter.points +=3;
             // If the picture was taken, display it on a new screen.
             await Navigator.of(context).push(
               MaterialPageRoute(
@@ -191,11 +194,11 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(children: <Widget>[
-          Image(image:  NetworkImage(Image.file(File(imagePath)).toString()),),
+         //Image.file(File(imagePath)),
         Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: ElevatedButton(
-          child: const Text('Login'),
+          child: const Text('Profile and Quizzes'),
           onPressed: () {
             Navigator.push(
               context,
