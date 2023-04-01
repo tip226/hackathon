@@ -57,6 +57,8 @@ import 'dart:io';
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 
+import 'pic.dart';
+
 Future<void> main() async {
   // Ensure that plugin services are initialized so that `availableCameras()`
   // can be called before `runApp()`
@@ -186,7 +188,24 @@ class DisplayPictureScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('Display the Picture')),
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.
-      body: Image.file(File(imagePath)),
+      body: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: Row(children: <Widget>[
+          Image(image:  NetworkImage(Image.file(File(imagePath)).toString()),),
+        Padding(
+        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+        child: ElevatedButton(
+          child: const Text('Login'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TabBarDemo()),
+            );
+          },
+        ),
+        )
+        ],)
+      ),
     );
   }
 }
