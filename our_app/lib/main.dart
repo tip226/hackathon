@@ -246,7 +246,9 @@ class DisplayPictureScreen extends StatelessWidget {
           Image.file(File(imagePath)),
         Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: ElevatedButton(
+        child: Expanded(child: Align(
+          alignment: Alignment.bottomCenter,
+          child:ElevatedButton(
           child: const Text('Profile and Quizzes'),
           onPressed: () {
             Navigator.push(
@@ -255,6 +257,8 @@ class DisplayPictureScreen extends StatelessWidget {
             );
           },
         ),
+        ),)
+        
         )
         ],)
       ),
