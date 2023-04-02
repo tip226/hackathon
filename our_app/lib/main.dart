@@ -80,7 +80,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.green,
       ),
       //home: const MyHomePage(title: 'The Buzz'),
       home: SignInScreen(),
@@ -175,7 +175,7 @@ class TakePictureScreenState extends State<TakePictureScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Take a picture')),
+      appBar: AppBar(title: const Text('Take a flick of you recycling!')),
       // You must wait until the controller is initialized before displaying the
       // camera preview. Use a FutureBuilder to display a loading spinner until the
       // controller has finished initializing.
@@ -237,27 +237,29 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Display the Picture')),
+      appBar: AppBar(title: const Text('Location: Rural')),
       // The image is stored as a file on the device. Use the `Image.file`
       // constructor with the given path to display the image.
       body: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(children: <Widget>[
-          Image.file(File(imagePath)),
+          Expanded(
+            child: Image.file(File(imagePath)),
+          ),
         Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: Expanded(child: Align(
-          alignment: Alignment.bottomCenter,
-          child:ElevatedButton(
-          child: const Text('Profile and Quizzes'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const TabBarDemo()),
-            );
-          },
-        ),
-        ),)
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: Expanded(child: Align(
+            alignment: Alignment.bottomCenter,
+            child:ElevatedButton(
+            child: const Text('Share!'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TabBarDemo()),
+              );
+            },
+          ),
+          ),)
         
         )
         ],)

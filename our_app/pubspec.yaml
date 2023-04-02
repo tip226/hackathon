@@ -28,7 +28,6 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-
   flutter:
     sdk: flutter
 
@@ -41,7 +40,8 @@ dependencies:
   google_sign_in: ^6.0.2
   firebase_core: ^2.9.0
   firebase_auth: ^4.4.0
-
+  geolocator: ^8.2.0
+  geocoding: ^2.0.4
   
 dev_dependencies:
   flutter_test:

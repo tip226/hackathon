@@ -91,7 +91,8 @@ class TabBarDemo extends StatelessWidget {
                 Tab(icon: Icon(Icons.face_outlined)),
               ],
             ),
-            title: const Text('Main Page'),
+            title: const Text('Flicko'),
+            backgroundColor: Colors.green,
           ),
           body:  TabBarView(
             children: [
