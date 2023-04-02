@@ -3,6 +3,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+import 'package:flutter/foundation.dart' show kIsWeb;
+
+class UserInfo{
+  static String name = "";
+  static String email = "";
+}
 class Authentication {
   static Future<FirebaseApp> initializeFirebase({required BuildContext context}) async {
     FirebaseApp firebaseApp = await Firebase.initializeApp();
@@ -10,6 +16,22 @@ class Authentication {
     // TODO: Add auto login logic
 
     return firebaseApp;
+  }
+  static Future<void> signOut({required BuildContext context}) async {
+    final GoogleSignIn googleSignIn = GoogleSignIn();
+
+    try {
+      if (!kIsWeb) {
+        await googleSignIn.signOut();
+      }
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        Authentication.customSnackBar(
+          content: 'Error signing out. Try again.',
+        ),
+      );
+    }
   }
   static Future<GoogleSignInAccount?> signIn() async {
     GoogleSignIn _googleSignIn = GoogleSignIn();
@@ -21,10 +43,10 @@ class Authentication {
     User? user;
 
     final GoogleSignIn googleSignIn = GoogleSignIn();
-
     final GoogleSignInAccount? googleSignInAccount =
         await googleSignIn.signIn();
-
+    UserInfo.name= googleSignInAccount!.displayName.toString();
+    UserInfo.email= googleSignInAccount.email.toString();
     if (googleSignInAccount != null) {
       final GoogleSignInAuthentication googleSignInAuthentication =
           await googleSignInAccount.authentication;
