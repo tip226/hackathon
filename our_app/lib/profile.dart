@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'main.dart';
-
+import 'authentication.dart';
+import 'sign_in_screen.dart';
 
 class Profile extends StatelessWidget {
   // This widget is the root of your application.
@@ -11,7 +12,7 @@ class Profile extends StatelessWidget {
       title: 'Profile',
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: Color(0xff0f8958),
           title: const Center(
             child: Text('Profile'),
           ),
@@ -44,45 +45,56 @@ class _AddProfileWidget extends State<AddProfileWidget> {
   final _emailController = TextEditingController();
   String username = '';
   String email = '';
+  bool _isSigningOut = false;
 
   @override
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
         child: Column(
-      children: [
-        TextField(
-          controller: _usernameController,
-          decoration: const InputDecoration(
-            hintText: 'username',
-            border: OutlineInputBorder(),
-          ),
-          maxLength: 128, // max amount of characters accepted is 128
-        ),
-        TextField(
-          controller: _emailController,
-          decoration: const InputDecoration(
-            hintText: 'email',
-            border: OutlineInputBorder(),
-          ),
-          maxLength: 128, // max amount of characters accepted is 128
-        ),
-        Text(
-            style: const TextStyle(height: 2, fontSize: 20),
-            'Points: ${Counter.points}'
-          ),
-        Align(
-          alignment: Alignment.centerLeft,
-          child: MaterialButton(
-            onPressed: () {
-              // checks if both title and idea field are filled before adding
-             
-               
-            },
-            color: Colors.blueGrey,
-            child: const Text('Save', style: TextStyle(color: Colors.white)),
-          ),
-        ),
-      ],
+          children: [
+            TextField(
+              controller: _usernameController,
+              decoration:  InputDecoration(
+                hintText: '${UserInfo.name}',
+                border: OutlineInputBorder(),
+              ),
+              maxLength: 128, // max amount of characters accepted is 128
+            ),
+            TextField(
+              controller: _emailController,
+              decoration:  InputDecoration(
+                hintText: '${UserInfo.email}',
+                border: OutlineInputBorder(),
+              ),
+              maxLength: 128, // max amount of characters accepted is 128
+            ),
+            Text(
+                style: const TextStyle(height: 2, fontSize: 20),
+                'Points: ${Counter.points}'
+              ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: MaterialButton(
+                onPressed: () async {
+                  // checks if both title and idea field are filled before adding
+                  setState(() {
+                          _isSigningOut = true;
+                          });
+                  await Authentication.signOut(context: context);
+
+                  setState(() {
+                    _isSigningOut = false;
+                  });
+                  
+                  Navigator.of(context)
+                      .pushReplacement(MaterialPageRoute(builder: (context) => SignInScreen()));
+                  
+                },
+                color: Colors.blueGrey,
+                child: const Text('Sign out', style: TextStyle(color: Colors.white)),
+              ),
+            ),
+          ],
     ));
   }
 }

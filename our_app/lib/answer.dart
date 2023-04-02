@@ -12,7 +12,7 @@ class MyApp1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text("Quiz App"), shadowColor: Colors.brown,),
+        appBar: AppBar(title: const Text("Quiz App"), backgroundColor: Colors.green,),
         backgroundColor: Colors.green[50],
         body: SafeArea(
           child: Padding(

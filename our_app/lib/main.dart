@@ -80,7 +80,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.pink,
+        primarySwatch: Colors.green,
       ),
       //home: const MyHomePage(title: 'The Buzz'),
       home: SignInScreen(),
@@ -243,21 +243,23 @@ class DisplayPictureScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(children: <Widget>[
-          Image.file(File(imagePath)),
+          Expanded(
+            child: Image.file(File(imagePath)),
+          ),
         Padding(
-        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child: Expanded(child: Align(
-          alignment: Alignment.bottomCenter,
-          child:ElevatedButton(
-          child: const Text('Profile and Quizzes'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const TabBarDemo()),
-            );
-          },
-        ),
-        ),)
+          padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+          child: Expanded(child: Align(
+            alignment: Alignment.bottomCenter,
+            child:ElevatedButton(
+            child: const Text('Share!'),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const TabBarDemo()),
+              );
+            },
+          ),
+          ),)
         
         )
         ],)
