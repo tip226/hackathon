@@ -1,8 +1,11 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:our_app/profile.dart';
 import 'dart:async';
 import 'package:provider/provider.dart';
 import 'home_page.dart';
+import 'question.dart';
+import 'answer.dart';
 // Provides functions which use REST calls and interprets responses
 
 
@@ -94,7 +97,8 @@ class TabBarDemo extends StatelessWidget {
             children: [
               //TakePictureScreen(camera: implement().then((value) => null),),
               //HomePage(),
-              const MyHomePage(title: "Profile!")
+              MyApp1(),
+              Profile(),
             ],
           ),
         ),
