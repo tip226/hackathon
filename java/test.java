@@ -1,4 +1,6 @@
-package hackathon.java;
+package hackathon.Java;
+
+//package hackathon.java;
 import java.util.ArrayList;
 import java.util.Scanner;
 

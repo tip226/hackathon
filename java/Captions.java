@@ -1,4 +1,5 @@
-package hackathon.java;
+package hackathon.Java;
+//package hackathon.java;
 // import java.io.*;
 // import java.util.*;
 import java.util.Scanner;
@@ -15,9 +16,9 @@ public class Captions {
         while (true){
                 System.out.println("Add a comment:");
                 captionsList.add(s.nextLine());
-                System.out.println("Number of captions: " + captionsList.size());
+                System.out.println("\nNumber of captions: " + captionsList.size());
                 displayList(captionsList);
-                System.out.println("Add more ? 1/Yes 2/No");
+                System.out.println("\nAdd more ? 1/Yes 2/No");
                     input = s.nextInt();
                         if(input == 1){
                             s.nextLine();
@@ -29,7 +30,7 @@ public class Captions {
             }
             
         }
-        
+    
     public static void displayList(ArrayList captionsList) {
         for(int i = 0; i < captionsList.size(); i++) 
             System.out.println(captionsList.get(i));
