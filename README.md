@@ -31,6 +31,7 @@ By encouraging users to take photos of their eco-friendly actions, Flicko not on
     2. Go to the blue bar at the bottom of the screen
     3. Click on the devices “ connected button “
     4. Select the emulator you want to use ( suggested android )
+    5. Press "Run" in the our_app/lib/main.dart right above the main function (line 67)
 
 - Java:
     1. Go to Visual Studio Code
@@ -51,7 +52,15 @@ By encouraging users to take photos of their eco-friendly actions, Flicko not on
 
 - Java:
     1. Type in users’ input
-- Figma:
+    2. Start by creating a Flicko account
+    3. Run the Caption file
+    4. Run the Quiz file 
+    5. Log into your Flicko account
+    6. Select ‘a’ when the home page appears
+    7. Add the points won from the Quiz
+    8. Select ‘b’ to leave and save all changes
+
+- Figma: 
     1. Press the interactive buttons-Treat it as if you are actually using a mobile app.
 
 ## (5) Citations
@@ -64,7 +73,8 @@ Links:
 - For quiz inspo: <https://github.com/AJM4K/QuizappMCQ/blob/main/quizapp%203/lib/main.dart>
 - Alert Dialog Inspo:<https://stackoverflow.com/questions/71341404/how-to-automatically-show-an-alert-dialog-without-pressing-a-button-in-flutter>
 - Sign in with Google OAuth:
-<https://medium.com/flutter-community/flutter-implementing-google-sign-in-71888bca24ed>
+https://medium.com/flutter-community/flutter-implementing-google-sign-in-71888bca24ed
+
 
 ## List of challenges categorized by location
 
